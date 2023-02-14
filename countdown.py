@@ -1,24 +1,19 @@
-import pygame
+from playsound import playsound
 import tkinter as tk
 
-pygame.mixer.pre_init(44100, -16, 2, 2048)
-pygame.init()
-pygame.mixer.init()
-pygame.mixer.music.load("9-5 opener.mp3")
-counter = (5*60)+5
+
+counter = (15*60)
 def counter_label (label):
     counter = 15*60
     def count():
         global counter
         if counter == (15*60):
-            pygame.mixer.music.play()
+            playsound("9-5 opener.mp3", block=False)
             print("play")
         if counter == (5*60):
-            pygame.mixer.music.load("9 to 5 sting.mp3")
-            pygame.mixer.music.play()
+            playsound("9 to 5 sting.mp3", block=False)
         if counter == (0):
-            pygame.mixer.music.load("work alarm.mp3")
-            pygame.mixer.music.play()
+            playsound("work alarm.mp3", block=False)
         counter -= 1
         mins,secs = divmod(counter,60)
         if secs < 10:
